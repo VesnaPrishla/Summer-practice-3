@@ -3,7 +3,7 @@
 #define MAX 100
 
 //¬веди слово и всЄ готово
-int vvod(struct queue* q, struct stack* stk, int count);
+int vvod( struct stack* stk, int count);
 
 #endif // !_UTILITES_H
 

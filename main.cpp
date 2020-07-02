@@ -8,12 +8,13 @@
 #include "stack.h"
 #include "utilits.h"
 #include "comparison.h"
+#include "check_by_steck.h"
 #define MAX 100
 
 
 
 
-int main()
+/*int main()
 {
 	setlocale(LC_ALL, "RUS");
 	int  count = 0, i = 0;
@@ -41,6 +42,27 @@ int main()
 		printf("\nслово палиндром\n");
 	free(stk);
 	free(q);
+	system("pause");
+	return 0;
+}
+*/
+int main()
+{
+	setlocale(LC_ALL, "RUS");
+	int  count = 0, i = 0;
+	struct stack* stk;
+	stk = (struct stack*)malloc(sizeof(struct stack));
+	if (!stk)
+	{
+		printf("Не удалось выделить память\n");
+		return NULL;
+	}
+	init_stack(stk); //инициализация stack
+	count = vvod(stk, count);
+	if (check_stack(stk, count) == 0)
+		printf("палиндром\n");
+
+	free(stk);
 	system("pause");
 	return 0;
 }
