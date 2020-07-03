@@ -58,8 +58,8 @@ int main()
 		return NULL;
 	}
 	init_stack(stk); //инициализация stack
-	count = vvod(stk, count);
-	if (check_stack(stk, count) == 0)
+	//count = vvod(stk, count);
+	if (check_stack(stk, count) == 1)
 		printf("палиндром\n");
 
 	free(stk);
