@@ -44,23 +44,3 @@ int isempty_stack(struct stack* stk)
 	else return 0;
 }
 
-//Развлечение элемента из стека для функции
-char pop_stack2(struct stack* stk, int i, int count) 
-{
-	char elem;
-	if (i != -1 && i != count)
-	{
-		if ((stk->top) > 0)
-		{
-			stk->top--;
-			elem = stk->elem[stk->top];
-			return elem;
-		}
-		else
-		{
-			printf("Стек пуст!\n");
-			return 0;
-		}
-	}
-
-}

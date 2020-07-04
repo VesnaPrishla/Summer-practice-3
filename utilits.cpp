@@ -4,16 +4,38 @@
 #include "queue.h"
 #include "stack.h"
 #define MAX 100
-//Введи слово и всё готово
-int vvod(struct stack* stk, int count)
+//Заполнение стека, если количество букв в слове- чётное
+int input_even(struct stack* stk, int i, int count, char str[MAX])
 {
-	int i = 0; char s[MAX];
-	printf("Введите слово : ");
-	gets_s(s);
-	for (i = 0; s[i] != '\0'; i++)
+	char rec;
+	while (i <= count / 2 - 1)
 	{
-		push_stack(stk, s[i]);//добавление в стек
-		count++;
+		push_stack(stk, str[i]);//добавление в стек
+		i++;
 	}
-	return count;
+	for (i = count / 2; i < count; i++)
+	{
+		rec = pop_stack(stk);
+		if (str[i] != rec)
+			return 0;
+
+	}
+	return 1;//палиндром
+}
+//Заполнение стека, если количество букв в слове- нечётное
+int input_uneven(struct stack* stk, int i, int count, char str[MAX])
+{
+	char rec;
+	while (i <= count / 2)
+	{
+		push_stack(stk, str[i]);//добавление в стек
+		i++;
+	}
+	for (i = count / 2; i < count; i++)
+	{
+		rec = pop_stack(stk);
+		if (str[i] != rec)
+			return 0;
+	}
+	return 1;
 }
