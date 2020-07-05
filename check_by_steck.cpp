@@ -2,32 +2,31 @@
 #include "utilits.h"
 #include <stdio.h>
 //‘ункци€ считывает слово и выдаЄт 1 если этослово- палиндром
-int check_by_stack(struct stack* stk, char str[MAX])
+int check_by_stack(struct stack* stk, int count, char str[MAX + 1])
 {
-	int i = 0, count = 0; char s[MAX];//ввод
-	printf("¬ведите слово : ");
-	gets_s(s);
-	for (i = 0; s[i] != '\0'; i++)
+	//счетчик
+	int counter = 0, i = 0;
+	//recoverable - извлекаемое
+	char rec;
+	//добавление в стек половины слова
+	while (i < count / 2)
 	{
-		str[i] = s[i];
-		count++;
+		//добавление в стек
+		push_stack(stk, str[i]);
+		i++;
+		//отвечает за то, сколько элементов добавлено в стек
+		counter++;
 	}
-	i = 0;
-	if (count % 2 == 0)
+	while (counter != 0)
 	{
-		if (input_even(stk, i, count, str) == 0)
+		rec = pop_stack(stk);
+		if (str[count - counter] != rec)
 		{
-			printf(" не палиндром\n");
+			printf("не палиндром\n");
 			return 0;
 		}
+		counter--;
 	}
-	else
-	{
-		if (input_uneven(stk, i, count, str) == 0)
-		{
-			printf(" не палиндром\n");
-			return 0;
-		}
-	}
-	return  1;
+	return 1;
 }
+

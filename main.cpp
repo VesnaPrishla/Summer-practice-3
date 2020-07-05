@@ -13,19 +13,34 @@
 int main()
 {
 	setlocale(LC_ALL, "RUS");
-	int  i = 0; char str[MAX]; struct stack* stk;
+	int  i = 0;
+	//количество символов в слове
+	int count = 0;
+	//указатель на количество символов
+	int* pntr;
+	pntr = &count;
+	//исходное слово
+	char str[MAX + 1];
+	//ввод исходного слова
+	input_word(str, pntr);
+	//выделение пам€ти дл€ стека
+	struct stack* stk;
 	stk = (struct stack*)malloc(sizeof(struct stack));
 	if (!stk)
 	{
 		printf("Ќе удалось выделить пам€ть\n");
 		return NULL;
 	}
-	init_stack(stk); //инициализаци€ stack
-	if (check_by_stack(stk, str) == 1)
+	//инициализаци€ stack
+	init_stack(stk);
+
+	//проверка, €вл€етс€ ли слово палиндромом
+	if (check_by_stack(stk, *pntr, str) == 1)
 		printf("палиндром\n");
 
-
+	//освобождение пам€ти
 	free(stk);
 	system("pause");
+
 	return 0;
 }
